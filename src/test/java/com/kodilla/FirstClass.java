@@ -1,2 +1,4 @@
-package com.kodilla;public class FirstClass {
+package com.kodilla;
+
+public class FirstClass {
 }
