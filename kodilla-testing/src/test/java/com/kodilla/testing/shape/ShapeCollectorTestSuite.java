@@ -19,16 +19,16 @@ public class ShapeCollectorTestSuite {
         System.out.println("Test Suite: end");
     }
 
-    @Test
-    public void testAddFigure(){
+   @Test
+   public  void testAddFigure(){
         //Given
-        ShapeCollector shapeCollector = new ShapeCollector();
-        Shape shape = new Square(3);
-        //When
-        shapeCollector.addFigure(shape);
-        //Then
-        Assertions.assertEquals(1, shapeCollector.getShapeCollection().size());
-    }
+       ShapeCollector shapeCollector = new ShapeCollector();
+       Shape shape = new Square(3);
+       //When
+       shapeCollector.addFigure(shape);
+       //Then
+       Assertions.assertEquals(1, shapeCollector.getShapeCollection().size());
+   }
 
     @Test
     public void testRemoveFigure(){
