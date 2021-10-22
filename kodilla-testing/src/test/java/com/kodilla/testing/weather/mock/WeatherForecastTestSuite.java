@@ -3,8 +3,6 @@ package com.kodilla.testing.weather.mock;
 import com.kodilla.testing.weather.stub.Temperatures;
 import com.kodilla.testing.weather.stub.WeatherForecast;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
@@ -34,8 +32,8 @@ class WeatherForecastTestSuite {
         //Then
         Assertions.assertEquals(5, quantityOfSensors);
     }
-    @BeforeAll
-    static void testAverageTemperature() {
+    @Test
+    void testAverageTemperature() {
         //Given
         Temperatures temperaturesMock = mock(Temperatures.class);
         Map<String, Double> temperaturesMap = new HashMap<>();
@@ -48,14 +46,14 @@ class WeatherForecastTestSuite {
         WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
 
         //When
-        int quantityOfSensors = weatherForecast.calculateForecast().size();
+        Double aveTemperature = weatherForecast.averageTemperature();
 
         //Then
-        Assertions.assertEquals(5, quantityOfSensors);
+        Assertions.assertEquals(25.56 ,aveTemperature);
 
     }
-    @BeforeEach
-    void testMedianTempoerature(){
+    @Test
+    void testMedianTemperature(){
         //Given
         Temperatures temperaturesMock = mock(Temperatures.class);
         Map<String, Double> temperaturesMap = new HashMap<>();
@@ -68,10 +66,10 @@ class WeatherForecastTestSuite {
         WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
 
         //When
-        int quantityOfSensors = weatherForecast.calculateForecast().size();
+        Double medTemperature = weatherForecast.medianTemperature();
 
         //Then
-        Assertions.assertEquals(5, quantityOfSensors);
+        Assertions.assertEquals(25.5, medTemperature);
     }
 }
 

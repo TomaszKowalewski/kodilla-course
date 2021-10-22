@@ -1,7 +1,6 @@
 package com.kodilla.testing.weather.stub;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class WeatherForecast {
 
@@ -22,22 +21,31 @@ public class WeatherForecast {
         }
         return resultMap;
     }
-    public Map<String, Double> averageTemperature() {
-        Map<String, Double> aveTemperature = new HashMap<>();
-
-        for (Map.Entry<String, Double> temperature :
-            temperatures.getTemperatures().entrySet()) {
-            aveTemperature.put(temperature.getKey(), temperature.getValue() / aveTemperature.size());
+    public Double averageTemperature() {
+      double sum = 0.0;
+      for (Map.Entry<String, Double> temperature:
+          temperatures.getTemperatures().entrySet()) {
+          sum += temperature.getValue();
         }
-        return aveTemperature;
+      double avg = sum/ temperatures.getTemperatures().size();
+      return avg;
     }
-    public Map<String, Double> medianTemperature(){
-        Map<String, Double> medTemperature = new HashMap<>();
 
-        for (Map.Entry<String, Double> temperature :
-            temperatures.getTemperatures().entrySet()) {
-            medTemperature.put(temperature.getKey(), temperature.getValue()/2);
+
+    public Double medianTemperature() {
+        double med = 0.0;
+        List<Double> temperaturesList = new ArrayList<>();
+        for (Map.Entry<String , Double> temperature :
+        temperatures.getTemperatures().entrySet()) {
+            temperaturesList.add(temperature.getValue());
         }
-        return medTemperature;
+        Collections.sort(temperaturesList);
+        if (temperaturesList.size() % 2 != 0) {
+            return temperaturesList.get(temperaturesList.size() / 2);
+        } else {
+            double a = temperaturesList.get(temperaturesList.size() / 2);
+            double b = temperaturesList.get((temperaturesList.size()-1) / 2);
+            return (a+b)/2.0;
+        }
     }
 }
