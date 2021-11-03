@@ -98,6 +98,7 @@ public class BookDirectoryTestSuite {
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
         LibraryUser libraryUser = new LibraryUser("firstname", "lastname", "peselID");
         when(libraryDatabaseMock.listBooksInHandsOf(libraryUser)).thenReturn(generateListOfNBooks (1));
+
         //When
         List<Book> rent1 = bookLibrary.listBooksInHandsOf(libraryUser);
 
