@@ -1,4 +1,5 @@
 import com.kodilla.stream.beautifier.PoemBeautifier;
+import com.kodilla.stream.iterate.NumbersGenerator;
 import com.kodilla.stream.lambda.ExpressionExecutor;
 import com.kodilla.stream.reference.FunctionalCalculator;
 
@@ -28,7 +29,7 @@ public class StreamMain {
     poemBeautifier.beautify("If not now, then when?", "The spoon does not exist",(firstText, secondText) -> firstText.toUpperCase()+" "+secondText.toUpperCase());
     poemBeautifier.beautify("If not now, then when?", "The spoon does not exist",(firstText, secondText) -> "***"+" "+secondText+" "+"***"+" "+"***"+" "+firstText+" "+"***");
 
-
-
+    System.out.println("Using stream to generate even numbers from 1 to 20");
+    NumbersGenerator.generateEven(20);
     }
 }
