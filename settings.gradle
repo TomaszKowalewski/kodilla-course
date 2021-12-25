@@ -6,4 +6,5 @@ include 'kodilla-testing:kodilla-stream:untitled'
 findProject(':kodilla-testing:kodilla-stream:untitled')?.name = 'untitled'
 include 'kodilla-exception'
 include 'kodilla-exception'
+include 'kodilla-good-patterns'
 
