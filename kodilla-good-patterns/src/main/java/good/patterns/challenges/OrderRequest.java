@@ -11,7 +11,7 @@ public class OrderRequest {
 
     public OrderRequest(User user, Order ... order) {
         this.user = user;
-        this.orderList.addAll(Arrays.asList((order)));
+        this.orderList.addAll(Arrays.asList(order));
     }
 
     public User getUser() {
