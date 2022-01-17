@@ -8,21 +8,20 @@ public enum Season {
     HIGH(new BigDecimal(320), new BigDecimal(420)),
     HOLIDAY(new BigDecimal(400), new BigDecimal(500));
 
-    private BigDecimal singleRoomPrice;
-    private BigDecimal doubleRoomPrice;
+    private BigDecimal singleBedPrices;
+    private BigDecimal doubleBedPrices;
 
-    Season(BigDecimal singleRoomPrice, BigDecimal doubleRoomPrice) {
-        this.singleRoomPrice = singleRoomPrice;
-        this.doubleRoomPrice = doubleRoomPrice;
+    Season(BigDecimal singleBedPrices, BigDecimal doubleBedPrices) {
+        this.singleBedPrices = singleBedPrices;
+        this.doubleBedPrices = doubleBedPrices;
     }
 
-    public BigDecimal getSingleRoomPrice() {
-        return singleRoomPrice;
+    public BigDecimal getSingleBedPrices() {
+        return singleBedPrices;
     }
 
-    public BigDecimal getDoubleRoomPrice() {
-        return doubleRoomPrice;
+    public BigDecimal getDoubleBedPrices() {
+        return doubleBedPrices;
     }
 }
-
 

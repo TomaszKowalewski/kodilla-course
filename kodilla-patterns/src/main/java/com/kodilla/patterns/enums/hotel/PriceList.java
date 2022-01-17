@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class PriceList {
 
-    private static Map<Season, BigDecimal> singeBedPrices = Map.of(
+    private static Map<Season, BigDecimal> singleBedPrices = Map.of(
             Season.LOW, new BigDecimal(250),
             Season.HIGH, new BigDecimal(320),
             Season.HOLIDAY, new BigDecimal(400)
@@ -18,11 +18,12 @@ public class PriceList {
     );
 
     public static BigDecimal getSingleBedPrices(Season season) {
-        return singeBedPrices.get(season);
+        return singleBedPrices.get(season);
     }
-
     public static BigDecimal getDoubleBedPrices(Season season) {
         return doubleBedPrices.get(season);
     }
 }
+
+
 

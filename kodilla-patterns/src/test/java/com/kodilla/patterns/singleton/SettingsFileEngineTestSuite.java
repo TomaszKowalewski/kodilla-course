@@ -14,7 +14,7 @@ public class SettingsFileEngineTestSuite {
     @BeforeAll
     public static void openSettingsFile() {
         settingsFileEngine = SettingsFileEngine.INSTANCE;
-        settingsFileEngine.open("myapp.settings");
+        settingsFileEngine.open("myapp settings");
     }
 
     @AfterAll
@@ -29,14 +29,14 @@ public class SettingsFileEngineTestSuite {
         String fileName = settingsFileEngine.getFileName();
         System.out.println("Opened: " + fileName);
         //Then
-        assertEquals("myapp.settings", fileName);
+        assertEquals("myapp settings", fileName);
     }
 
     @Test
     void testLoadSettings() {
         //Given
         //When
-        boolean result = settingsFileEngine.loadSettings();
+        Boolean result = settingsFileEngine.loadSettings();
         //Then
         assertTrue(result);
     }
@@ -45,8 +45,10 @@ public class SettingsFileEngineTestSuite {
     void testSaveSettings() {
         //Given
         //When
-        boolean result = settingsFileEngine.saveSettings();
+        Boolean result = settingsFileEngine.saveSettings();
         //Then
         assertTrue(result);
     }
 }
+
+
