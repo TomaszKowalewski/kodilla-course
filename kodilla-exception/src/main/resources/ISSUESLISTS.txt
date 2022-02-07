@@ -1,0 +1,82 @@
+CREATE TABLE ISSUESLISTS
+(
+    ID SERIAL PRIMARY KEY,
+    NAME VARCHAR(100)
+);
+
+COMMIT;
+
+CREATE TABLE ISSUES
+(
+    ID SERIAL PRIMARY KEY,
+    ISSUESLISTS_ID BIGINT UNSIGNED NOT NULL,
+    SUMMARY VARCHAR(1000),
+    DESCRIPTION VARCHAR(1000),
+    USER_ID_ASSIGNEDTO BIGINT UNSIGNED NOT NULL,
+
+    FOREIGN KEY (ISSUESLISTS_ID) REFERENCES ISSUESLISTS(ID),
+    FOREIGN KEY (USER_ID_ASSIGNEDTO) REFERENCES USERS(ID)
+);
+
+COMMIT;
+
+INSERT INTO ISSUESLISTS (NAME)
+VALUE ("To do");
+
+INSERT INTO ISSUESLISTS (NAME)
+VALUE ("In progress");
+
+INSERT INTO ISSUESLISTS (NAME)
+VALUE ("Done");
+
+COMMIT;
+
+INSERT INTO ISSUES (ISSUESLISTS_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUE (1, "summary of 1 task to do" , "description of 1 task to do", 1);
+
+INSERT INTO ISSUES (ISSUESLISTS_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUE (1, "summary of 2 task to do", "description of 2 task to do", 2);
+
+INSERT INTO ISSUES (ISSUESLISTS_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUE (1, "summary of 3 task to do", "desription of 3 task to do", 3);
+
+INSERT INTO ISSUES (ISSUESLISTS_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUE (1, "summary of 4 task to do", "description of 4 task to do", 4);
+
+INSERT INTO ISSUES (ISSUESLISTS_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUE (1, "summary of 5 task to do", "description of 5 task to do", 2);
+
+COMMIT;
+
+INSERT INTO ISSUES (ISSUESLISTS_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUE (2, "summary of 1 task in progres", "description of 1 task in progres", 1);
+
+INSERT INTO ISSUES (ISSUESLISTS_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUE (2, "summary of 2 task in progres", "description of 2 task in progres", 2);
+
+INSERT INTO ISSUES (ISSUESLISTS_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUE (2, "summary of 3 task in progres", "description of 3 task in progres", 3);
+
+INSERT INTO ISSUES (ISSUESLISTS_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUE (2, "summary of 4 task in progres", "description of 4 task in progres", 5);
+
+INSERT INTO ISSUES (ISSUESLISTS_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUE (2, "summary of 5 task in progres", "description of 5 task in progres", 4);
+
+INSERT INTO ISSUES (ISSUESLISTS_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUE (3, "summary of 1 task done", "description of 1 task done", 2);
+
+INSERT INTO ISSUES (ISSUESLISTS_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUE (3, "summary of 2 task done", "description of 2 task done", 5);
+
+INSERT INTO ISSUES (ISSUESLISTS_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUE (3, "summary of 3 task done", "description of 3 task done", 4);
+
+INSERT INTO ISSUES (ISSUESLISTS_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUE (3, "summary of 4 task done", "description of 4 task done", 1);
+
+INSERT INTO ISSUES (ISSUESLISTS_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUE (3, "summary of 5 task done", "description of 5 task done", 3);
+
+COMMIT;
+
