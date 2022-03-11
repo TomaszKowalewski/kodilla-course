@@ -3,17 +3,23 @@ package com.kodilla.hibernate.manytomany.dao;
 import com.kodilla.hibernate.manytomany.Company;
 import com.kodilla.hibernate.manytomany.CompanyDao;
 import com.kodilla.hibernate.manytomany.Employee;
+import com.kodilla.hibernate.manytomany.EmployeeDao;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 @SpringBootTest
 class CompanyDaoTestSuite {
 
-    @Autowired
+   @Autowired
     private CompanyDao companyDao;
+   @Autowired
+    private EmployeeDao employeeDao;
 
     @Test
     void testManyToMany() {
@@ -47,17 +53,60 @@ class CompanyDaoTestSuite {
         int grayMatterId = greyMatter.getId();
 
         //Then
-        assertEquals(128, softwareMachineId);
-        assertEquals(128, dataMastersId);
-        assertEquals(128, grayMatterId);
+        assertNotEquals(0, softwareMachineId);
+        assertNotEquals(0, dataMastersId);
+        assertNotEquals(0, grayMatterId);
 
         //CleanUp
-        /*try {
-              companyDao.deleteById(softwareMachineId);
-              companyDao.deleteById(dataMastersId);
-              companyDao.deleteById(grayMatterId);
+        try {
+            companyDao.deleteAll();
+
         } catch (Exception e) {
-              do nothing
-        }*/
+            //do nothing
+        }
     }
+
+   @Test
+    void testQueriesFindByLastname() {
+        //Given
+         Employee johnSmith = new Employee("John", "Smith");
+         Company softwareMachines = new Company("Software Machines");
+         softwareMachines.getEmployees().add(johnSmith);
+         johnSmith.getCompanies().add(softwareMachines);
+
+         //When
+         employeeDao.save(johnSmith);
+         int johnSmithId = johnSmith.getId();
+         List<Employee> employeesWithLastName = employeeDao.retrieveEmployeesByLastname("Smith");
+
+         //Then
+         assertEquals(1, employeesWithLastName.size());
+
+         //CleanUp
+         employeeDao.deleteAll();
+     }
+
+    @Test
+    void testQueriesFindByLastThreeLetters(){
+         //Given
+         Employee johnSmith = new Employee("John", "Smith");
+
+         Company softwareMachines = new Company("Software Machines");
+
+         softwareMachines.getEmployees().add(johnSmith);
+
+         johnSmith.getCompanies().add(softwareMachines);
+
+         //When
+         companyDao.save(softwareMachines);
+         int softwareMachinesId = softwareMachines.getId();
+
+         List<Company> companiesWithThreeFirsLetters = companyDao.retrieveCompaniesByFirstThreeLetters("Sof");
+
+         //Then
+         assertEquals(1, companiesWithThreeFirsLetters.size());
+
+         //CleanUp
+         companyDao.deleteAll();
+     }
 }
