@@ -22,7 +22,7 @@ public class SearchCompanyAndWorkerFacadeTest {
     @Autowired
     private EmployeeDao employeeDao;
 
-    @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
+
     @Autowired
     SearchCompanyAndWorkerFacade searchCompanyAndWorkerFacade;
 
@@ -54,8 +54,8 @@ public class SearchCompanyAndWorkerFacadeTest {
         companyDao.save(softwareMachine);
         companyDao.save(dataMaesters);
         companyDao.save(greyMatter);
-        List<Employee> employee = searchCompanyAndWorkerFacade.searchFromEmployee("smi");
-        List<Company> companyName = searchCompanyAndWorkerFacade.searchFromCompany("sof");
+        List<Employee> employee = searchCompanyAndWorkerFacade.searchFromEmployee("Smith");
+        List<Company> companyName = searchCompanyAndWorkerFacade.searchFromCompany("Sof");
 
         //Then
         assertEquals(1, employee.size());
@@ -63,9 +63,9 @@ public class SearchCompanyAndWorkerFacadeTest {
 
         //CleanUp
         try {
-            companyDao.deleteById(softwareMachine.getId());
-            companyDao.deleteById(dataMaesters.getId());
-            companyDao.deleteById(greyMatter.getId());
+            companyDao.deleteAll();
+            employeeDao.deleteAll();
+
         } catch (Exception e) {
             // Do nothing
         }

@@ -5,7 +5,10 @@ import org.springframework.lang.NonNull;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-
+@NamedQuery(
+        name = "Company.retrieveCompanyName",
+        query = "FROM Company WHERE name like concat('%',:NAME_PART,'%')"
+)
 @NamedNativeQuery(
         name = "Company.retrieveCompaniesByFirstThreeLetters",
         query = "SELECT * FROM companies WHERE LEFT(company_name, 3) = :FIRSTTHREELETTERS ",
