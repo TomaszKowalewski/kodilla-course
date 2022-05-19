@@ -17,6 +17,7 @@ dependencies { // https://mvnrepository.com/artifact/mysql/mysql-connector-java
 
 
     implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'io.metersphere:jmeter-plugins-webdriver:3.4'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
